@@ -20,12 +20,16 @@ class Net(object):
 class Table(object):
     def __init__(self, left_corner_pos, length, width):
         self.left_corner_pos = left_corner_pos
-        self.height = height
+        self.length = length
         self.width = width
 
     def collision(self, ball):
-        if ball.pos[1] >= self.left_corner_pos[1] and
-           ball.pos[0] >= self.left_corner_pos
+        return ball.pos[1] - ball.radius <= self.left_corner_pos[1] and
+           ball.pos[1] + ball.radius >= self.left_corner_pos[1] and
+           ball.pos[0] >= self.left_corner_pos[0] and
+           ball.pos[0] <= self.left_corner_pos[0] + self.width and
+           ball.pos[2] <= self.left_corner_pos[2] and
+           ball.pos[2] >= self.left_corner_pos[2] - self.length
 
 
 class Paddle(object):
