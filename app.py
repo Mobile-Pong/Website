@@ -9,12 +9,19 @@ def index():
     return render_template("index.html")
 
 
-# @app.route('/', methods=['GET'])
-# def downloadList():
-#     conn = db_connection()
-#     cur = db_cursor(conn)
-#
-#
+@app.route('/pushData', methods=['GET'])
+def pushData():
+    conn = db_connection()
+    cur = db_cursor(conn)
+
+    playerID = request.args.get('playerID', '')
+    motion = request.args.get('motion', '')
+    orientation = request.args.get('orientation', '')
+
+@app.route('/getData', methods=['POST'])
+def getData():
+    return json.dumps({'Status': 'Success'})
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
