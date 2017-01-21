@@ -40,8 +40,13 @@ class Paddle(object):
         self.radius = radius
         self.angles = angles
 
+    def collision(self, ball):
+    	return dist(self.center, ball.pos) <= self.radius
+
 def dist(pt1, pt2):
     return math.sqrt(sum(map(lambda x: x ** 2, [pt1[i] - pt2[i] for i in range(3)])))
+
+
 
 class Ball(object):
 
