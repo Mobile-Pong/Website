@@ -8,7 +8,6 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-
 @app.route('/pushData', methods=['GET'])
 def pushData():
     conn = db_connection()
