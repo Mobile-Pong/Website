@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from db_connector import db_connection, db_cursor
 import json
+import os
 app = Flask(__name__)
 
 @app.route('/')
