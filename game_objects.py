@@ -33,12 +33,12 @@ class Table(object):
 
 
 class Paddle(object):
-    def __init__(self, center, radius, angles):
+    def __init__(self, center, radius):
         # angles: [yaw, pitch, roll]
         self.pos = pos
         self.center = center
         self.radius = radius
-        self.angles = angles
+        #self.angles = angles
 
     def collision(self, ball):
     	return dist(self.center, ball.pos) <= self.radius
@@ -50,9 +50,10 @@ def dist(pt1, pt2):
 
 class Ball(object):
 
-	def __init__(self, pos, vel):
+	def __init__(self, pos, vel, radius):
 		self.pos = pos
 		self.vel = vel
+    self.radius = radius
 		
 	def update(self):
 		self.pos = [self.pos[i] + self.vel[i]*0.7 for i in range(3)]
