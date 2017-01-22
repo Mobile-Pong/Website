@@ -39,7 +39,7 @@ def getData():
     conn = db_connection()
     cur = db_cursor(conn)
 
-    cur.execute('SELECT * FROM player_info WHERE player_id = %s;', (data['player_id'], ))
+    cur.execute('SELECT * FROM game_info WHERE player_id = %s;', (data['player_id'], ))
     return_val = dict(cur.fetchone())
     conn.close()
 
