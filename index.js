@@ -1,19 +1,10 @@
 'use strict';
 const express = require('express');
-const socketIO = require('socket.io');
-//     sockets = require('./sockets');
-// var app = express();
-// var server = require('http').createServer(app),
-//     io = require('socket.io').listen(server);
-//
-// server.listen(process.env.PORT || 5000);
-
-// app.set('port', (process.env.PORT || 5000));
+const sockets = require('./sockets');
 
 var port = process.env.PORT || 3000;
 var app = express();
 var server = require('http').createServer(app);
-var io = socketIO.listen(server);
 
 server.listen(port);
 
@@ -24,22 +15,8 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-// const server = app.listen(process.env.PORT || 5000, function() {
-//   console.log('Node app is running on port', app.get('port'));
-// });
-
 app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-// const io = socketIO(server);
-
-io.sockets.on('connection', (socket) => {
-  console.log('Client connected');
-  socket.on('disconnect', () => console.log('Client disconnected'));
-});
-
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
-
-//
-// sockets.init();
+sockets.init(server);

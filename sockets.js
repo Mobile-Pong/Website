@@ -1,26 +1,22 @@
-var util = require("util"),
-    io = require('socket.io');
+const socketIO = require('socket.io');
+var util = require("util");
 
 module.exports = {
   init: init
 };
 
-var socket,
-    players;
+var players, io;
 
-function init() {
+function init(server) {
   players = [];
 
-  socket = io({
-    transports  : ['websocket'],
-  });
-
-  setEventHandlers();
+  setEventHandlers(server);
 };
 
-var setEventHandlers = function() {
-    socket.sockets.on("connection", onSocketConnection);
-};
+function setEventHandlers(server) {
+  io = socketIO.listen(server);
+  io.sockets.on('connection', onSocketConnection);
+}
 
 function onSocketConnection(client) {
     util.log("New player has connected: "+client.id);
