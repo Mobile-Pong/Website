@@ -1,7 +1,7 @@
 var PERSPECTIVE_FINAL = {
 	x: 0,
-	y: 0, 
-	z: 0  
+	y: 0,
+	z: 0
 };
 
 var BALL = {
@@ -13,11 +13,11 @@ var BALL = {
 
 var ball_l = {
 	x: 0,
-	y: 0  
+	y: 0
 }
 
 var ball_r = {
-	x: 0, 
+	x: 0,
 	y: 0
 }
 
@@ -29,21 +29,21 @@ var getBall = function (){
 	BALL.z = -1200,
 	BALL.r = 30
 }
- 
+
 
  var transformPointsBall = function (){
-	
-	var lambda_1 = PERSPECTIVE_FINAL.z / (PERSPECTIVE_FINAL.z - BALL.z) ;	
+
+	var lambda_1 = PERSPECTIVE_FINAL.z / (PERSPECTIVE_FINAL.z - BALL.z) ;
 	ball_l.x = PERSPECTIVE_FINAL.x + lambda_1 * (BALL.x - BALL.r - PERSPECTIVE_FINAL.x);
 	ball_l.y = PERSPECTIVE_FINAL.y + lambda_1 * (BALL.y - PERSPECTIVE_FINAL.y);
 
 	ball_r.x = PERSPECTIVE_FINAL.x + lambda_1 * (BALL.x + BALL.r - PERSPECTIVE_FINAL.x);
 	ball_r.y = PERSPECTIVE_FINAL.y + lambda_1 * (BALL.y - PERSPECTIVE_FINAL.y);
-	
+
 }
 
 var renderBall = function (){
-	
+
 	getPerspective();
 	getBall();
 	transformPointsBall();
@@ -60,6 +60,6 @@ var renderBall = function (){
 	c2.strokeStyle= "#000000";
 	c2.stroke();
 
-	console.log("ball");
-	
+	// console.log("ball");
+
 }

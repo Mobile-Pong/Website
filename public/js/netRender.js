@@ -1,7 +1,7 @@
 var PERSPECTIVE_FINAL = {
 	x: 0,
-	y: 0, 
-	z: 0  
+	y: 0,
+	z: 0
 };
 
 var NET = {
@@ -14,9 +14,9 @@ var NET = {
 
 var NET_lb = {
 	x: 0,
-	y: 0  
+	y: 0
 }
- 
+
 var NET_lt = {
 	x: 0,
 	y: 0
@@ -41,8 +41,8 @@ var getNET = function (){
 }
 
 var transformPointsNet = function (){
-	
-	var lambda_1 = PERSPECTIVE_FINAL.z / (PERSPECTIVE_FINAL.z - NET.z) ;	
+
+	var lambda_1 = PERSPECTIVE_FINAL.z / (PERSPECTIVE_FINAL.z - NET.z) ;
 	NET_lb.x = PERSPECTIVE_FINAL.x + lambda_1 * (NET.x - PERSPECTIVE_FINAL.x);
 	NET_lb.y = PERSPECTIVE_FINAL.y + lambda_1 * (NET.y - PERSPECTIVE_FINAL.y);
 
@@ -59,7 +59,7 @@ var transformPointsNet = function (){
 
 
 var renderNet = function (){
-	
+
 	getPerspective();
 	getNET();
 	transformPointsNet();
@@ -77,8 +77,7 @@ var renderNet = function (){
 	c2.fillStyle = "#36DC1C";
 	c2.fill();
 
-	console.log("net");
-	
+	// console.log("net");
+
 
 }
-
