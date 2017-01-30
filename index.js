@@ -2,13 +2,20 @@
 const express = require('express');
 const socketIO = require('socket.io');
 //     sockets = require('./sockets');
-var app = express();
-var server = require('http').createServer(app),
-    io = require('socket.io').listen(server);
-
-server.listen(process.env.PORT || 5000);
+// var app = express();
+// var server = require('http').createServer(app),
+//     io = require('socket.io').listen(server);
+//
+// server.listen(process.env.PORT || 5000);
 
 // app.set('port', (process.env.PORT || 5000));
+
+var port = process.env.PORT || 3000;
+var app = express();
+var server = require('http').createServer(app);
+var io = socketIO.listen(server);
+
+server.listen(port);
 
 // public is directory for all view files
 app.use(express.static(__dirname + '/public'));
@@ -17,17 +24,17 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-const server = app.listen(process.env.PORT || 5000, function() {
-  console.log('Node app is running on port', app.get('port'));
-});
+// const server = app.listen(process.env.PORT || 5000, function() {
+//   console.log('Node app is running on port', app.get('port'));
+// });
 
 app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-const io = socketIO(server);
+// const io = socketIO(server);
 
-io.on('connection', (socket) => {
+io.sockets.on('connection', (socket) => {
   console.log('Client connected');
   socket.on('disconnect', () => console.log('Client disconnected'));
 });

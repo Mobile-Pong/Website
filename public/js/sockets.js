@@ -1,4 +1,4 @@
-socket = io('http://localhost:8000');
+socket = io.connect();
 
 var setEventHandlers = function() {
 	// Socket connection successful
