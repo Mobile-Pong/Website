@@ -1,7 +1,7 @@
 var PERSPECTIVE_FINAL = {
 	x: 0,
-	y: 0, 
-	z: 0  
+	y: 0,
+	z: 0
 };
 
 var TABLE = {
@@ -14,9 +14,9 @@ var TABLE = {
 
 var table_lb = {
 	x: 0,
-	y: 0  
+	y: 0
 }
- 
+
 var table_lt = {
 	x: 0,
 	y: 0
@@ -31,7 +31,7 @@ var table_rt = {
 }
 
 var getPerspective = function (){
-	
+
 	//Make server request
 	PERSPECTIVE_FINAL.x = 750;
 	PERSPECTIVE_FINAL.y = 600;
@@ -49,8 +49,8 @@ var getTable = function (){
 }
 
 var transformPoints = function (){
-	
-	var lambda_1 = PERSPECTIVE_FINAL.z / (PERSPECTIVE_FINAL.z - TABLE.z) ;	
+
+	var lambda_1 = PERSPECTIVE_FINAL.z / (PERSPECTIVE_FINAL.z - TABLE.z) ;
 	table_lb.x = PERSPECTIVE_FINAL.x + lambda_1 * (TABLE.x - PERSPECTIVE_FINAL.x);
 	table_lb.y = PERSPECTIVE_FINAL.y + lambda_1 * (TABLE.y - PERSPECTIVE_FINAL.y);
 
@@ -67,7 +67,7 @@ var transformPoints = function (){
 
 
 var renderTable = function (){
-	
+
 	getPerspective();
 	getTable();
 	transformPoints();
@@ -88,7 +88,6 @@ var renderTable = function (){
 	c2.fill();
 	c2.stroke();
 
-	console.log("table");
-	
-}
+	// console.log("table");
 
+}

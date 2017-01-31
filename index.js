@@ -1,8 +1,14 @@
-var express = require('express');
+'use strict';
+const express = require('express');
+const sockets = require('./sockets');
+
+var port = process.env.PORT || 3000;
 var app = express();
+var server = require('http').createServer(app);
 
-app.set('port', (process.env.PORT || 5000));
+server.listen(port);
 
+// public is directory for all view files
 app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
@@ -13,6 +19,4 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
+sockets.init(server);
