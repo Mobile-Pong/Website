@@ -1,4 +1,4 @@
-socket = io.connect();
+var socket = io.connect();
 
 var setEventHandlers = function() {
 	// Socket connection successful
